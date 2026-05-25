@@ -89,7 +89,7 @@ function MatchScoreRing({ score }) {
           cy="60"
           r={radius}
           fill="none"
-          stroke="#6B8E7B"
+          stroke="#3F6B52"
           strokeWidth="10"
           strokeLinecap="round"
           strokeDasharray={circumference}

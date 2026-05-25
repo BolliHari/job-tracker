@@ -4,7 +4,7 @@ export default {
     extend: {
       colors: {
         paper: '#F9F9F6',
-        sage: '#6B8E7B',
+        sage: '#3F6B52',
         sand: '#E2D9C8',
         charcoal: '#2C302E',
       },
