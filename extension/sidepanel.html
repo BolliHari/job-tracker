@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Job Tracker</title>
+    <link rel="stylesheet" href="sidepanel.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <h1>Job Tracker</h1>
+      <p class="sub">Save jobs from job boards and company career pages to your vault.</p>
+
+      <div class="sites" id="site-chips">
+        <span class="chip">LinkedIn</span>
+        <span class="chip">Indeed</span>
+        <span class="chip">Wellfound</span>
+        <span class="chip">Company Site</span>
+      </div>
+
+      <section id="login-section">
+        <div class="alert alert-info">Sign in with your Job Tracker account.</div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" type="email" autocomplete="email" placeholder="you@example.com" />
+        </div>
+        <div class="field">
+          <label for="password">Password</label>
+          <input id="password" type="password" autocomplete="current-password" />
+        </div>
+        <button type="button" class="btn btn-primary" id="login-btn" style="width: 100%">
+          Sign in
+        </button>
+      </section>
+
+      <section id="app-section" class="hidden">
+        <div class="user-bar">
+          <span id="user-label"></span>
+          <button type="button" class="btn btn-secondary" id="logout-btn">Log out</button>
+        </div>
+
+        <div id="message" class="hidden"></div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-secondary" id="import-btn">Import from page</button>
+          <a class="link" id="open-vault" href="#" target="_blank" rel="noopener">Open vault</a>
+        </div>
+
+        <form id="job-form">
+          <div class="field">
+            <label for="role">Role *</label>
+            <input id="role" name="role" required />
+          </div>
+          <div class="field">
+            <label for="company">Company *</label>
+            <input id="company" name="company" required />
+          </div>
+          <div class="row">
+            <div class="field">
+              <label for="platform">Platform</label>
+              <select id="platform" name="platform">
+                <option>LinkedIn</option>
+                <option>Indeed</option>
+                <option>Wellfound</option>
+                <option>Company Site</option>
+                <option>Referral</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="status">Status</label>
+              <select id="status" name="status">
+                <option>Bookmarked</option>
+                <option>Applying</option>
+                <option>Applied</option>
+                <option>Interview</option>
+                <option>Accepted</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="postLink">Job post link</label>
+            <input id="postLink" name="postLink" type="url" />
+          </div>
+          <div class="field">
+            <div class="jd-header">
+              <label for="jobDescription">Job description</label>
+              <button type="button" class="btn btn-ai" id="ai-btn" title="AI summarize">
+                ✨ AI
+              </button>
+            </div>
+            <textarea id="jobDescription" name="jobDescription" rows="6"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" id="save-btn" style="width: 100%">
+            Save to vault
+          </button>
+        </form>
+      </section>
+    </div>
+    <script type="module" src="sidepanel.js"></script>
+  </body>
+</html>

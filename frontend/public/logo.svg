@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none" role="img" aria-label="JB">
+  <rect width="48" height="48" rx="14" fill="#6B8E7B"/>
+  <text
+    x="24"
+    y="31"
+    text-anchor="middle"
+    font-family="ui-sans-serif, system-ui, -apple-system, sans-serif"
+    font-size="20"
+    font-weight="700"
+    letter-spacing="-0.04em"
+    fill="#F9F9F6"
+  >JB</text>
+  <circle cx="38" cy="38" r="3.5" fill="#E2D9C8"/>
+</svg>

@@ -1,0 +1,54 @@
+{
+  "manifest_version": 3,
+  "name": "Job Tracker",
+  "version": "1.0.0",
+  "description": "Save jobs from LinkedIn, Indeed, Wellfound, and company career pages to your Job Tracker vault.",
+  "permissions": ["storage", "activeTab", "sidePanel", "tabs", "scripting"],
+  "host_permissions": [
+    "http://localhost:5000/*",
+    "http://127.0.0.1:5000/*",
+    "http://localhost:5173/*",
+    "https://www.linkedin.com/*",
+    "https://linkedin.com/*",
+    "https://www.indeed.com/*",
+    "https://indeed.com/*",
+    "https://wellfound.com/*",
+    "https://www.wellfound.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "action": {
+    "default_title": "Open Job Tracker"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.linkedin.com/jobs/*",
+        "https://linkedin.com/jobs/*"
+      ],
+      "js": ["content/shared.js", "content/linkedin.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://www.indeed.com/*",
+        "https://indeed.com/*",
+        "https://*.indeed.com/*"
+      ],
+      "js": ["content/shared.js", "content/indeed.js"],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://wellfound.com/*",
+        "https://www.wellfound.com/*"
+      ],
+      "js": ["content/shared.js", "content/wellfound.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}
