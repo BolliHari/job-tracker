@@ -14,7 +14,7 @@ import {
   logoutUser,
   clearProfileMessages,
   clearPasswordMessages,
-} from '../../store/authslice.js'
+} from '../../store/authSlice.js'
 import { API_BASE_URL, APP_BASE_URL } from '../../utils/api'
 
 function Field({ label, id, ...inputProps }) {

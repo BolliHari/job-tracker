@@ -9,7 +9,7 @@ import {
   PanelLeftClose,
   PanelLeftOpen,
 } from 'lucide-react'
-import { logoutUser } from '../../store/authslice.js'
+import { logoutUser } from '../../store/authSlice.js'
 import Logo from '../brand/Logo'
 
 const SIDEBAR_STORAGE_KEY = 'sidebar_collapsed'

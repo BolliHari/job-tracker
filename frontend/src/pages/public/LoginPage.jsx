@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { loginUser, registerUser, clearAuthError } from '../../store/authslice.js'
+import { loginUser, registerUser, clearAuthError } from '../../store/authSlice.js'
 import Logo from '../../components/brand/Logo'
 
 function Field({ label, id, ...inputProps }) {
