@@ -1,7 +1,10 @@
 import axios from 'axios'
 
-export const API_BASE_URL = "https://job-tracker-server-r4lr.onrender.com"
-export const APP_BASE_URL = "https://job-tracker-u64j.vercel.app"
+// Must end with /api — backend routes are mounted at /api/auth, /api/jobs, etc.
+export const API_BASE_URL =
+  import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+export const APP_BASE_URL =
+  import.meta.env.VITE_APP_URL || 'http://localhost:5173'
 
 export const api = axios.create({
   baseURL: API_BASE_URL,
