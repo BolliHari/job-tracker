@@ -355,6 +355,9 @@ export default function LandingPage() {
             <a href="#features" className="hover:text-sage">
               Features
             </a>
+            <Link to="/privacy" className="hover:text-sage">
+              Privacy
+            </Link>
           </div>
         </div>
       </footer>

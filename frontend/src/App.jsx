@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import LandingPage from './pages/public/LandingPage'
 import LoginPage from './pages/public/LoginPage'
+import PrivacyPage from './pages/public/PrivacyPage'
 import PrivateLayout from './components/layouts/PrivateLayout'
 import { useSelector } from 'react-redux'
 import Dashboard from './pages/private/Dashboard'
@@ -23,6 +24,7 @@ export default function App() {
     <Routes>
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginPage />} />
+      <Route path="/privacy" element={<PrivacyPage />} />
       <Route
         path="/dashboard"
         element={
