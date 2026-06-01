@@ -182,6 +182,36 @@ async function scrapeCompanySite(tabId) {
   return result?.result
 }
 
+const SITE_SCRAPE_FILES = {
+  linkedin: ['content/shared.js', 'content/linkedin.js'],
+  indeed: ['content/shared.js', 'content/indeed.js'],
+  wellfound: ['content/shared.js', 'content/wellfound.js'],
+}
+
+async function scrapeViaContentScript(tabId, siteId) {
+  let response
+
+  try {
+    response = await chrome.tabs.sendMessage(tabId, { type: 'SCRAPE_JOB' })
+  } catch {
+    response = null
+  }
+
+  if (!response?.ok && SITE_SCRAPE_FILES[siteId]) {
+    await chrome.scripting.executeScript({
+      target: { tabId },
+      files: SITE_SCRAPE_FILES[siteId],
+    })
+    response = await chrome.tabs.sendMessage(tabId, { type: 'SCRAPE_JOB' })
+  }
+
+  if (response?.ok) return response.data
+  throw new Error(
+    response?.message ||
+      'Could not read this page. Open a single job posting, wait for it to load, then try again.'
+  )
+}
+
 async function scrapeActiveTab() {
   const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
   if (!tab?.id || !tab.url) {
@@ -196,12 +226,7 @@ async function scrapeActiveTab() {
   }
 
   if (siteId !== 'company') {
-    try {
-      const response = await chrome.tabs.sendMessage(tab.id, { type: 'SCRAPE_JOB' })
-      if (response?.ok) return response.data
-    } catch {
-      // Fall back to the generic company-site scraper below.
-    }
+    return scrapeViaContentScript(tab.id, siteId)
   }
 
   try {

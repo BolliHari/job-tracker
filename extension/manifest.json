@@ -1,13 +1,13 @@
 {
   "manifest_version": 3,
   "name": "Job Tracker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Save jobs from LinkedIn, Indeed, Wellfound, and company career pages to your Job Tracker vault.",
   "permissions": ["storage", "activeTab", "sidePanel", "tabs", "scripting"],
   "host_permissions": [
-    "http://localhost:5000/*",
-    "http://127.0.0.1:5000/*",
-    "http://localhost:5173/*",
+    "https://job-tracker-server-r4lr.onrender.com/*",
+    "https://job-tracker-server-r4lr.onrender.com/*",
+    "https://job-tracker-u64j.vercel.app/*",
     "https://www.linkedin.com/*",
     "https://linkedin.com/*",
     "https://www.indeed.com/*",

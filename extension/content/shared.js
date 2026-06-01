@@ -46,10 +46,16 @@ function buildPayload({ role, company, jobDescription, postLink, platform }) {
 }
 
 function respondScrape(getData) {
-  chrome.runtime.onMessage.addListener((message, _sender, sendResponse) => {
+  globalThis.__jtScrapeGetData = getData
+
+  if (globalThis.__jtScrapeMessageListener) return
+
+  globalThis.__jtScrapeMessageListener = (message, _sender, sendResponse) => {
     if (message?.type !== 'SCRAPE_JOB') return
     try {
-      const data = getData()
+      const scrape = globalThis.__jtScrapeGetData
+      if (!scrape) throw new Error('Scraper not ready. Reload the page and try again.')
+      const data = scrape()
       sendResponse({
         ok: true,
         supported: true,
@@ -63,7 +69,9 @@ function respondScrape(getData) {
       })
     }
     return true
-  })
+  }
+
+  chrome.runtime.onMessage.addListener(globalThis.__jtScrapeMessageListener)
 }
 
 // eslint-disable-next-line no-undef
@@ -77,3 +85,4 @@ if (typeof globalThis !== 'undefined') {
     respondScrape,
   }
 }
+
