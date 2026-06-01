@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { loginUser, registerUser, clearAuthError } from '../../store/authSlice.js'
 import Logo from '../../components/brand/Logo'
+import { DEMO_LOGIN } from '../../config/demoLogin'
 
 function Field({ label, id, ...inputProps }) {
   return (
@@ -55,6 +56,19 @@ function LoginPage() {
       navigate('/dashboard')
     } catch (err) {
       console.error('Login failed:', err)
+    }
+  }
+
+  async function handleDemoLogin() {
+    dispatch(clearAuthError())
+    setSignIn({ email: DEMO_LOGIN.email, password: DEMO_LOGIN.password })
+    try {
+      await dispatch(
+        loginUser({ email: DEMO_LOGIN.email, password: DEMO_LOGIN.password })
+      ).unwrap()
+      navigate('/dashboard')
+    } catch (err) {
+      console.error('Demo login failed:', err)
     }
   }
 
@@ -139,6 +153,27 @@ function LoginPage() {
                     {isLoading ? 'Signing in…' : 'Sign in'}
                   </button>
                 </form>
+
+                <div className="relative my-6">
+                  <div className="absolute inset-0 flex items-center" aria-hidden>
+                    <div className="w-full border-t border-sand" />
+                  </div>
+                  <p className="relative mx-auto w-fit bg-white px-3 text-xs uppercase tracking-wide text-charcoal/45">
+                    For recruiters
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={handleDemoLogin}
+                  disabled={isLoading}
+                  className="w-full rounded-xl border border-sand bg-paper px-3 py-2.5 text-sm font-medium text-charcoal transition-colors hover:border-sage/40 hover:bg-sage/5 disabled:opacity-50"
+                >
+                  {isLoading ? 'Opening demo…' : 'Explore demo account'}
+                </button>
+                <p className="mt-2 text-center text-xs text-charcoal/50">
+                  One click — see the dashboard, vault, and sample jobs.
+                </p>
 
                 <p className="mt-6 text-center text-sm text-charcoal/60">
                   Don&apos;t have an account?{' '}
