@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import Logo from '../../components/brand/Logo'
+import ChatBubble from '../../components/chat/ChatBubble'
 import {
   ArrowRight,
   Briefcase,
@@ -342,6 +343,8 @@ export default function LandingPage() {
           </Link>
         </div>
       </section>
+
+      <ChatBubble />
 
       <footer className="border-t border-sand px-4 py-8 sm:px-6">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">

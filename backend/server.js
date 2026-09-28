@@ -1,5 +1,6 @@
 // Import dependencies
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 const express = require("express");
 const cors = require("cors");
 const connectDB = require("./src/config/db");
@@ -8,6 +9,7 @@ const targetRoutes = require("./src/routes/targetRoutes");
 const jobRoutes = require("./src/routes/jobRoutes");
 const userRoutes = require("./src/routes/userRoutes");
 const aiRoutes = require("./src/routes/aiRoutes");
+const chatRoutes = require("./src/routes/chatRoutes");
 
 // Initialize the app
 const app = express();
@@ -38,6 +40,7 @@ app.use("/api/targets", targetRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/ai", aiRoutes);
+app.use("/api/chat", chatRoutes);
 
 // A simple test route
 app.get("/api/health", (req, res) => {

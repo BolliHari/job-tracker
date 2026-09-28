@@ -1,0 +1,45 @@
+Job Tracker product guide. This document is the only source of truth for the homepage assistant.
+
+What Job Tracker is
+Job Tracker is a free web app that helps you organize a job search. The tagline is "Track every application. Land the role you want." It is a gamified job search built for focus. You set personal goals, log applications, follow up on time, and keep every role in one vault. The live site is https://job-tracker-rho-olive.vercel.app. Getting started is free: open the site, choose Get started or Sign in, and create an account.
+
+Personal goals
+On the dashboard and in settings you can set four targets: the role you want, a target date, a salary goal, and a daily application count. The daily application count defaults to 20 and can be edited anytime. Daily progress compares how many applications you logged today with that daily target, so you can stay accountable without a spreadsheet.
+
+Action radar
+The dashboard shows an action radar for follow-ups. A follow-up appears when a job status is Applied and you have not contacted that company in 6 or more days. The count uses the job's last contact date. You can mark a follow-up done in one click, which updates the last contact date.
+
+Job vault and pipeline stages
+The job vault is the list of every role you are tracking. Stages, in order, are Bookmarked, Applying, Applied, Interview, and Accepted. You can search by company, role, or platform, and filter by stage. Two views are available and you can switch anytime: a list view with funnel counts, and a Kanban board. On the Kanban board you drag a card from one column to another to change its status. The change saves to your account immediately. Each column shows a live count.
+
+Adding a job
+You can add a job from the dashboard or the vault. A job stores the role, company, platform, status, salary, date applied, optional date posted, last contact date, post link, resume file name, resume text, and the job description. New jobs start as Bookmarked unless you choose another status.
+
+Job detail page
+Open any role from the vault to see its detail page. The page has two tabs: Job description and AI Coach. The side panel shows an AI match score, missing keywords, application details (date applied, days since applied, platform, resume used), and a timeline of the pipeline stages.
+
+AI features on a job
+These features run only when you are signed in, and only for that job. They are separate from this homepage chat.
+
+Structured JD summary: paste a job description of at least 50 characters, then summarize it. The summary includes responsibilities, requirements, skills, experience level, location, compensation, and benefits.
+
+Resume match: paste resume text of at least 100 characters in Edit job, then choose Analyze. You get a match score from 0 to 100 and a list of missing keywords compared with the job description.
+
+AI Coach: on the job detail page, the AI Coach tab can generate interview questions and a follow-up email from the role, company, and job description. The job description must be at least 50 characters, and both role and company are required.
+
+When you use these AI features, the text you submit is sent to the Job Tracker API and then to Google Gemini. Only the text you choose to send is used for that request.
+
+Chrome extension
+Job Tracker has a Chrome side-panel extension. It saves jobs from the page you are on into the same vault as the web app, using the same login. Supported sites are LinkedIn (a single job at linkedin.com/jobs/view/...), Indeed (a job detail page), Wellfound (a single listing on wellfound.com/jobs/...), and a company career page that is one job posting rather than a list of jobs. The extension scrapes the title, company, description, and link. It can also ask the API to structure the job description, then save the job with one click. It does not run in the background and it does not track browsing. It reads the page only when you click Import from page.
+
+How to install the extension
+Open Chrome and go to chrome://extensions. Turn on Developer mode. Choose Load unpacked and select the extension folder from the Job Tracker project. Pin Job Tracker in the toolbar. Click the icon and the side panel opens on the right. Sign in with the same account you use on the website.
+
+Accounts, sign-in, and price
+Creating an account is free. Sign up with your name, email, and a password. Passwords are stored hashed, never as plain text. After sign-in you land on the dashboard. Settings let you update your targets, change your password (new password must be at least 6 characters), and log out. The extension stores your name, email, and login token in Chrome storage on your device until you log out.
+
+Privacy
+Job Tracker does not sell or rent personal data. Account and job data are stored in MongoDB. The API is hosted on Render and the web app is hosted on Vercel. You can delete individual jobs from the vault. To delete your account and associated data, email bollihari18@gmail.com. The full policy is on the Privacy page linked in the site footer. The product is not directed at children under 13.
+
+What this homepage assistant can and cannot do
+This chat answers questions about how Job Tracker works, using this product guide. It cannot see your private vault, change a job, or log you in. For those actions, sign in and use the dashboard, vault, or job detail page.

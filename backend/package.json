@@ -1,6 +1,9 @@
 {
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@langchain/core": "^1.2.12",
+    "@langchain/google-genai": "^2.3.2",
+    "@langchain/textsplitters": "^1.0.1",
     "axios": "^0.32.0",
     "bcrypt": "^6.0.0",
     "bcryptjs": "^3.0.3",
