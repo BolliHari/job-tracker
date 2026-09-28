@@ -1,8 +1,16 @@
 import axios from 'axios'
 
-// Must end with /api — backend routes are mounted at /api/auth, /api/jobs, etc.
-export const API_BASE_URL =
+// Backend routes are mounted at /api/auth, /api/jobs, etc.
+// Vercel may set VITE_API_URL to the host only, so add /api when it is missing.
+function withApiPrefix(url) {
+  const trimmed = String(url || '').replace(/\/+$/, '')
+  if (!trimmed) return 'http://localhost:5000/api'
+  return trimmed.endsWith('/api') ? trimmed : `${trimmed}/api`
+}
+
+export const API_BASE_URL = withApiPrefix(
   import.meta.env.VITE_API_URL || 'http://localhost:5000/api'
+)
 export const APP_BASE_URL =
   import.meta.env.VITE_APP_URL || 'http://localhost:5173'
 
